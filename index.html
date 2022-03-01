@@ -13,16 +13,23 @@
         <input id="input-product" type="text" class="form-control bg-secondary text-white" placeholder="Search your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
         <button onclick="searchProduct()" class="btn btn-outline-secondary bg-success text-white" type="button" id="button-search">SEARCH</button>
       </div>
-      <!-- details card -->
-      <div id="details-product" class="w-50 mx-auto p-5" >
+
+      <!-- spinner -->
+      <div   class="text-center mt-5 d-none">
+        <div class="spinner-border  " role="status">
+            <span id="spinner" class="visually-hidden">Loading...</span>
+          </div>
       </div>
+      <!-- details card -->
+        <div id="details-product" class="w-50 mt-5 mx-auto " >
+        </div>
 
       <!-- error msg -->
       <h2 id="error-msg" class="text-center text-danger "></h2>
       <h2 id="error-msg2" class="text-center text-danger "></h2>
 
       <!-- products cards -->
-      <div id="product-card" class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
+      <div id="product-card" class="row row-cols-1 row-sm-1 row-cols-md-3 g-4 mt-3 p-5">
       </div>
     <script src="js/phone.js"></script>
 </body>
