@@ -5,7 +5,7 @@ const searchProduct = () =>{
     // console.log(searchText)
     searchField.value= ''
     if(searchText==''){
-        errormsg1.innerText= 'no data found'
+        errormsg1.innerText= 'No data provided'
     }
    else{
     const url=  `https://openapi.programming-hero.com/api/phones?search=${searchText}`
@@ -23,7 +23,7 @@ const displayProduct = products =>{
     const errormsg2= document.getElementById('error-msg2')
     searchProduct.textContent= ''
     if(products<=0){
-        errormsg2.innerText= 'Please write something to display'
+        errormsg2.innerText= 'Please input your product name'
     }
     else{
         errormsg2.innerText= ''
@@ -58,14 +58,25 @@ const detailProducts= id=>{
 const displayDetails = product =>{
     const detailsInformation= document.getElementById('details-product');
     detailsInformation.textContent= ''
+    // if(product.releaseDate==""){
+    //   div.p.innerText= 'no relese'
+    // }
     const div= document.createElement('div');
     div.classList.add('card')
     div.innerHTML= `
     <img src="${product.image}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${product.name}</h5>
-          <p class="card-text">${product.mainFeatures}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card-body text-center ">
+          <h3 class="card-title">${product.name}</h3>
+          <p class="card-text">${product.releaseDate}</p>
+          <small>Storage</small>
+          <h6>${product.mainFeatures.storage}</h6>
+          <small>Screen & Display</small>
+          <h6>${product.mainFeatures.displaySize}</h6>
+          <small>Memory</small>
+          <h6>${product.mainFeatures.memory}</h6>
+          <small>Others</small>
+          <h6>${product.others.WLAN}</h6>
+          <a href="#" class="btn btn-primary ">continue</a>
         </div>
     `
     detailsInformation.appendChild(div)
