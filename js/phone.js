@@ -6,6 +6,7 @@ const searchProduct = () =>{
     searchField.value= ''
     if(searchText==''){
         errormsg1.innerText= 'No data provided'
+        errormsg2.innerText= ''
     }
    else{
     const url=  `https://openapi.programming-hero.com/api/phones?search=${searchText}`
@@ -16,35 +17,36 @@ const searchProduct = () =>{
    }
    
 }
-
+const errormsg2= document.getElementById('error-msg2')
 const displayProduct = products =>{
     // console.log(products)
     const searchProduct= document.getElementById('product-card');
-    const errormsg2= document.getElementById('error-msg2')
     searchProduct.textContent= ''
-    if(products<=0){
+    if(products<=0 || products!=0){
         errormsg2.innerText= 'Please input your product name'
     }
     else{
-        errormsg2.innerText= ''
+        products.forEach(product => {
+            // console.log(product)
+            const div= document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML= `
+            <div class="card">
+                <img src="${product.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${product.phone_name}</h5>
+                  <h6>${product.brand}</h6>
+                  <button onClick="detailProducts('${product.slug}')" class="btn btn-info text-white">Details</button>
+                </div>
+              </div>
+            `
+            searchProduct.appendChild(div)
+            errormsg2.innerText= ''
+           
+        });
+        
     }
-    products.forEach(product => {
-        // console.log(product)
-        const div= document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML= `
-        <div class="card">
-            <img src="${product.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">${product.phone_name}</h5>
-              <h6>${product.brand}</h6>
-              <button onClick="detailProducts('${product.slug}')" class="btn btn-info text-white">Details</button>
-            </div>
-          </div>
-        `
-        searchProduct.appendChild(div)
-       
-    });
+
 }
 
 const detailProducts= id=>{
@@ -58,9 +60,6 @@ const detailProducts= id=>{
 const displayDetails = product =>{
     const detailsInformation= document.getElementById('details-product');
     detailsInformation.textContent= ''
-    // if(product.releaseDate==""){
-    //   div.p.innerText= 'no relese'
-    // }
     const div= document.createElement('div');
     div.classList.add('card')
     div.innerHTML= `
