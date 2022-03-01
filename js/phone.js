@@ -73,14 +73,19 @@ const displayDetails = product =>{
         <div class="card-body text-center ">
           <h3 class="card-title">${product.name}</h3>
           <p class="card-text">${product.releaseDate}</p>
+          <hr>
           <small>Storage</small>
           <h6>${product.mainFeatures.storage}</h6>
+          <hr>
           <small>Screen & Display</small>
           <h6>${product.mainFeatures.displaySize}</h6>
+          <hr>
           <small>Memory</small>
           <h6>${product.mainFeatures.memory}</h6>
+          <hr>
           <small>Others</small>
           <h6>${product.others?.WLAN}</h6>
+          <hr>
           <a href="#" class="btn btn-primary ">continue</a>
         </div>
     `
