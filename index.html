@@ -5,30 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phones-Market</title>
+    <style>
+        #spinner{
+            display: none;
+        }
+
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 <body>
     <header class="p-3 ">
-        <h2 class="p-3 text-primary">Phones <span class="text-warning fw-bold">Markets</span></h2>
+        <h2 class=" text-primary">Phones <span class="text-warning fw-bold">Markets</span></h2>
     </header>
    <section>
-    <div class="text-center " >
-        <img class="w-50 h-50 border border-3 rounded" src="images/bg-img.jpg" alt="">
+    
+    <div class="text-center mt-3" >
+        <img class="w-25 h-25 border border-3 rounded" src="images/bg-img.jpg" alt="">
     </div>
-    <div class="input-group  w-50 mx-auto mt-5">
+    <div class="input-group  w-50 mx-auto">
         <input id="input-product" type="text" class="form-control bg-secondary text-white" placeholder="Search your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
         <button onclick="searchProduct()" class="btn btn-outline-secondary bg-success text-white" type="button" id="button-search">SEARCH</button>
       </div>
+    
 
       <!-- spinner -->
-      <div   class="text-center mt-5 d-none">
+      <div id="spinner"  class="text-center mt-5">
         <div class="spinner-border  " role="status">
-            <span id="spinner" class="visually-hidden">Loading...</span>
+            <span  class="visually-hidden">Loading...</span>
           </div>
       </div>
       <!-- details card -->
-        <div id="details-product" class="w-50 mt-5 mx-auto rounded" >
+       <div class="row">
+        <div id="details-product" class="w-50 mt-5 mx-auto rounded col-md-1 row-cols-1 row-sm-1" >
         </div>
+       </div>
 
       <!-- error msg -->
       <h2 id="error-msg" class="text-center text-danger "></h2>

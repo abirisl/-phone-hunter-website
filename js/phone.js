@@ -1,9 +1,10 @@
 const searchProduct = () =>{
     const searchField= document.getElementById('input-product');
     const errormsg1= document.getElementById('error-msg');
+    document.getElementById('spinner').style.display= 'block';
     const searchText= searchField.value;
-    toggoleSpinner('block');
-    // console.log(searchText)
+    searchField.value= ''
+    console.log(searchText)
     
     if(searchText==''){
         errormsg1.innerText= 'No data provided'
@@ -15,20 +16,16 @@ const searchProduct = () =>{
    const url=  `https://openapi.programming-hero.com/api/phones?search=${searchText}`
    fetch(url)
    .then(Response => Response.json())
-   .then(data => displayProduct(data.data))
-   searchField.value= ''
-  
+   .then(data => displayProduct(data.data)) 
    
-}
-const toggoleSpinner= displayLoad =>{
-    document.getElementById('spinner').style.display= displayLoad;
 }
 
 const displayProduct = products =>{
     
     const searchProduct= document.getElementById('product-card');
-    const errormsg2= document.getElementById('error-msg2');
     searchProduct.textContent= ''
+    document.getElementById('spinner').style.display= 'none';
+    const errormsg2= document.getElementById('error-msg2');
     if(products<=0){
         errormsg2.innerText= 'Please input your product name'
     }
@@ -36,7 +33,7 @@ const displayProduct = products =>{
         errormsg2.innerText= ''
     }
         
-    products.forEach(product => {
+    products.slice(0,20).forEach(product => {
         // console.log(product)
         const div= document.createElement('div');
         div.classList.add('col');
@@ -84,7 +81,7 @@ const displayDetails = product =>{
           <h6>${product.mainFeatures.memory}</h6>
           <hr>
           <small>Others</small>
-          <h6>${product.others?.WLAN}</h6>
+          <h6>${product.others.WLAN?product.others.WLAN:'not found'}</h6>
           <hr>
           <a href="#" class="btn btn-primary ">continue</a>
         </div>
